@@ -23,6 +23,10 @@ character_dict_cipher = {
 
 # *************************************************************************************************************
 
+# Function that prompts user for two strings and encrypts the first string with the second string using Vigenere
+# cipher. First string is the plain text and function ignores all non-alphabetic characters. All uppercase letters
+# are converted to lower case. The second string is the key and can be 1 or more in length.
+
 
 def plain_to_cipher():
     # Prompt user for sentence to encrypt and the key.
@@ -39,8 +43,8 @@ def plain_to_cipher():
     key = regular_expression.sub('', key)
 
     # Convert Sentence and key to lists
-    sentence = list(sentence)
-    key = list(key)
+    sentence1 = list(sentence)
+    key1 = list(key)
     difference = list()
     index = 0
     cipher_sentence = ""
@@ -49,34 +53,27 @@ def plain_to_cipher():
         if index == len(key):
             index = 0
 
-        if character_dict[key[index]] == character_dict[sentence[x]]:
+        if character_dict[key1[index]] == character_dict[sentence1[x]]:
             difference.append(0)
-        elif (character_dict[key[index]] + character_dict[sentence[x]]) > 25:
-            difference.append(character_dict[key[index]] + character_dict[sentence[x]] - 25)
+        elif (character_dict[key1[index]] + character_dict[sentence1[x]]) > 25:
+            difference.append(character_dict[key1[index]] + character_dict[sentence1[x]] - 25)
         else:
-            difference.append(character_dict[key[index]] + character_dict[sentence[x]])
+            difference.append(character_dict[key1[index]] + character_dict[sentence1[x]])
 
         index = index + 1
         cipher_sentence += character_dict_cipher[difference[x]]
 
     print("Cipher Text: " + cipher_sentence)
+    cipher_to_plain(cipher_sentence, key)
 
 # *************************************************************************************************************
 
+# This function is passed cipher text and the key. First string is the cipher text and function ignores all
+# non-alphabetic characters. All uppercase letters are converted to lower case. The second string is the key
+# and can be 1 or more in length.
 
-def cipher_to_plain():
-    # Prompt user for sentence to encrypt and the key.
-    cipher_text = str(input("Enter a Cipher Text to decrypt: "))
-    key = str(input("Enter a key: "))
 
-    # Changes string to lowercase.
-    cipher_txt = cipher_text.lower()
-    key = key.lower()
-
-    # Regular expression that removes all upper case and non alphabetical characters.
-    regular_expression = re.compile('[^a-za-z]')
-    cipher_text = regular_expression.sub('', cipher_txt)
-    key = regular_expression.sub('', key)
+def cipher_to_plain(cipher_text, key):
 
     # Convert Sentence and key to lists
     cipher_text = list(cipher_text)
@@ -103,13 +100,38 @@ def cipher_to_plain():
 
 # *************************************************************************************************************
 
+
+def automate_decrypting_vigenere():
+    # Prompt user for sentence to encrypt and the key.
+    cipher_text = str(input("Enter a Cipher Text to decrypt: "))
+    substring_text = str(input("Enter a substring found in Cipher Text: "))
+
+    while True:
+        key_size = int(input("Enter the max key size (1-10): "))
+
+        if 1 <= key_size <= 10:
+            break
+        else:
+            print("\nKey size does not match requirements. Please try again.\n")
+
+    # Changes string to lowercase.
+    cipher_text = cipher_text.lower()
+    substring_text = substring_text.lower()
+
+    # Regular expression that removes all upper case and non alphabetical characters.
+    regular_expression = re.compile('[^a-za-z]')
+    cipher_text = regular_expression.sub('', cipher_text)
+    substring_text = regular_expression.sub('', substring_text)
+
+# *************************************************************************************************************
+
 print("Project 1: Vigenere Cipher\n")
 
 while True:
     print("Select an option: ")
-    print("1. Task One: Encryption")
-    print("2. Task One: Decryption")
-    print("3. Quit Program\n")
+    print("1. Task One: Encryption then Decryption.")
+    print("2. Task Two: Decrypting string with unknown key.")
+    print("3. Quit Program.\n")
 
     answer = int(input("Option: "))
     print("")
@@ -118,7 +140,7 @@ while True:
         plain_to_cipher()
         print("")
     elif answer == 2:
-        cipher_to_plain()
+        automate_decrypting_vigenere()
         print("")
     elif answer == 3:
         break

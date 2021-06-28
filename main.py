@@ -129,6 +129,14 @@ def automate_decrypting_vigenere():
     index = 0
     flag1 = True
     flag2 = True
+    flag3 = True
+    flag4 = True
+    flag5 = True
+    flag6 = True
+    flag7 = True
+    flag8 = True
+    flag9 = True
+    flag10 = True
 
     for x in range(key_size):
         key_indexes.append(0)
@@ -140,13 +148,16 @@ def automate_decrypting_vigenere():
             break
         elif flag1:
             flag1 = False
+            # continue
             temp_flag = False
             passed_first_index = False
-            for z in range(26):
+            possible_number_keys = 26 ** 1
+
+            for z in range(possible_number_keys):
                 possible_solution = cipher_to_plain(cipher_text, character_dict_cipher[key_indexes[0]])
                 key_indexes[0] = key_indexes[0] + 1
 
-                if key_indexes[0] % 25 == 0 and passed_first_index:
+                if key_indexes[0] % 26 == 0 and passed_first_index:
                     key_indexes[0] = 0
 
                 passed_first_index = True
@@ -162,23 +173,25 @@ def automate_decrypting_vigenere():
             index = index + 1
         elif flag2:
             flag2 = False
+            # continue
             temp_flag = False
             passed_first_index0 = False
             passed_first_index1 = False
+            possible_number_keys = 26 ** 2
 
-            for z in range(52):
+            for z in range(possible_number_keys):
                 possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]]
                 possible_solution = cipher_to_plain(cipher_text, possible_key)
                 key_indexes[1] = key_indexes[1] + 1
 
-                if key_indexes[1] % 25 == 0 and passed_first_index1:
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
                     key_indexes[0] = key_indexes[0] + 1
                     key_indexes[1] = 0
                     passed_first_index0 = True
 
                 passed_first_index1 = True
 
-                if key_indexes[0] % 25 == 0 and passed_first_index0:
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[1] = 0
 
                 if substring_text in possible_solution:
@@ -186,10 +199,168 @@ def automate_decrypting_vigenere():
                     temp_flag = True
                     break
 
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+
             if temp_flag:
                 break
 
             index = index + 1
+        elif flag3:
+            flag3 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            possible_number_keys = 26 ** 3
+
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[2] = key_indexes[2] + 1
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index1 = True
+
+                passed_first_index2 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
+        elif flag4:
+            flag4 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            passed_first_index3 = False
+            possible_number_keys = 26 ** 4
+
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]] + character_dict_cipher[key_indexes[3]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[3] = key_indexes[3] + 1
+
+                if key_indexes[3] % 26 == 0 and passed_first_index3:
+                    key_indexes[2] = key_indexes[2] + 1
+                    key_indexes[3] = 0
+                    passed_first_index2 = True
+
+                passed_first_index3 = True
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index2 = False
+                    passed_first_index1 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+            key_indexes[3] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
+        elif flag5:
+            flag5 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            passed_first_index3 = False
+            passed_first_index4 = False
+            possible_number_keys = 26 ** 5
+
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]] + character_dict_cipher[key_indexes[3]] \
+                               + character_dict_cipher[key_indexes[4]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[4] = key_indexes[4] + 1
+
+                if key_indexes[4] % 26 == 0 and passed_first_index4:
+                    key_indexes[3] = key_indexes[3] + 1
+                    key_indexes[4] = 0
+                    passed_first_index3 = True
+
+                passed_first_index4 = True
+
+                if key_indexes[3] % 26 == 0 and passed_first_index3:
+                    key_indexes[2] = key_indexes[2] + 1
+                    key_indexes[3] = 0
+                    passed_first_index3 = False
+                    passed_first_index2 = True
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index2 = False
+                    passed_first_index1 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+            key_indexes[3] = 0
+            key_indexes[4] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
+
 
 
 # *************************************************************************************************************

@@ -21,6 +21,7 @@ character_dict_cipher = {
     23: "x", 24: "y", 25: "z"
 }
 
+
 # *************************************************************************************************************
 
 # Function that prompts user for two strings and encrypts the first string with the second string using Vigenere
@@ -64,7 +65,8 @@ def plain_to_cipher():
         cipher_sentence += character_dict_cipher[difference[x]]
 
     print("Cipher Text: " + cipher_sentence)
-    cipher_to_plain(cipher_sentence, key)
+    return cipher_to_plain(cipher_sentence, key)
+
 
 # *************************************************************************************************************
 
@@ -74,7 +76,6 @@ def plain_to_cipher():
 
 
 def cipher_to_plain(cipher_text, key):
-
     # Convert Sentence and key to lists
     cipher_text = list(cipher_text)
     key = list(key)
@@ -96,7 +97,8 @@ def cipher_to_plain(cipher_text, key):
         index = index + 1
         plain_sentence += character_dict_cipher[difference[x]]
 
-    print("Plain Text: " + plain_sentence)
+    return plain_sentence
+
 
 # *************************************************************************************************************
 
@@ -123,6 +125,73 @@ def automate_decrypting_vigenere():
     cipher_text = regular_expression.sub('', cipher_text)
     substring_text = regular_expression.sub('', substring_text)
 
+    key_indexes = list()
+    index = 0
+    flag1 = True
+    flag2 = True
+
+    for x in range(key_size):
+        key_indexes.append(0)
+
+    while True:
+
+        if index == key_size:
+            print("Plain text not found.")
+            break
+        elif flag1:
+            flag1 = False
+            temp_flag = False
+            passed_first_index = False
+            for z in range(26):
+                possible_solution = cipher_to_plain(cipher_text, character_dict_cipher[key_indexes[0]])
+                key_indexes[0] = key_indexes[0] + 1
+
+                if key_indexes[0] % 25 == 0 and passed_first_index:
+                    key_indexes[0] = 0
+
+                passed_first_index = True
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            if temp_flag:
+                break
+
+            index = index + 1
+        elif flag2:
+            flag2 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+
+            for z in range(52):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[1] = key_indexes[1] + 1
+
+                if key_indexes[1] % 25 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index0 = True
+
+                passed_first_index1 = True
+
+                if key_indexes[0] % 25 == 0 and passed_first_index0:
+                    key_indexes[1] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            if temp_flag:
+                break
+
+            index = index + 1
+
+
 # *************************************************************************************************************
 
 print("Project 1: Vigenere Cipher\n")
@@ -137,8 +206,7 @@ while True:
     print("")
 
     if answer == 1:
-        plain_to_cipher()
-        print("")
+        print("Plain Text: " + plain_to_cipher() + "\n")
     elif answer == 2:
         automate_decrypting_vigenere()
         print("")

@@ -147,8 +147,8 @@ def automate_decrypting_vigenere():
             print("Plain text not found.")
             break
         elif flag1:
+            print("Entering flag1")
             flag1 = False
-            # continue
             temp_flag = False
             passed_first_index = False
             possible_number_keys = 26 ** 1
@@ -172,8 +172,8 @@ def automate_decrypting_vigenere():
 
             index = index + 1
         elif flag2:
+            print("Entering flag2")
             flag2 = False
-            # continue
             temp_flag = False
             passed_first_index0 = False
             passed_first_index1 = False
@@ -207,6 +207,7 @@ def automate_decrypting_vigenere():
 
             index = index + 1
         elif flag3:
+            print("Entering flag3")
             flag3 = False
             temp_flag = False
             passed_first_index0 = False
@@ -250,6 +251,7 @@ def automate_decrypting_vigenere():
 
             index = index + 1
         elif flag4:
+            print("Entering flag4")
             flag4 = False
             temp_flag = False
             passed_first_index0 = False
@@ -301,6 +303,7 @@ def automate_decrypting_vigenere():
 
             index = index + 1
         elif flag5:
+            print("Entering flag5")
             flag5 = False
             temp_flag = False
             passed_first_index0 = False
@@ -360,7 +363,438 @@ def automate_decrypting_vigenere():
                 break
 
             index = index + 1
+        elif flag6:
+            print("Entering flag6")
+            flag6 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            passed_first_index3 = False
+            passed_first_index4 = False
+            passed_first_index5 = False
+            possible_number_keys = 26 ** 6
 
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]] + character_dict_cipher[key_indexes[3]] \
+                               + character_dict_cipher[key_indexes[4]] + character_dict_cipher[key_indexes[5]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[5] = key_indexes[5] + 1
+
+                if key_indexes[5] % 26 == 0 and passed_first_index5:
+                    key_indexes[4] = key_indexes[4] + 1
+                    key_indexes[5] = 0
+                    passed_first_index4 = True
+
+                passed_first_index5 = True
+
+                if key_indexes[4] % 26 == 0 and passed_first_index4:
+                    key_indexes[3] = key_indexes[3] + 1
+                    key_indexes[4] = 0
+                    passed_first_index4 = False
+                    passed_first_index3 = True
+
+                if key_indexes[3] % 26 == 0 and passed_first_index3:
+                    key_indexes[2] = key_indexes[2] + 1
+                    key_indexes[3] = 0
+                    passed_first_index3 = False
+                    passed_first_index2 = True
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index2 = False
+                    passed_first_index1 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+            key_indexes[3] = 0
+            key_indexes[4] = 0
+            key_indexes[5] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
+        elif flag7:
+            print("Entering flag7")
+            flag7 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            passed_first_index3 = False
+            passed_first_index4 = False
+            passed_first_index5 = False
+            passed_first_index6 = False
+            possible_number_keys = 26 ** 7
+
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]] + character_dict_cipher[key_indexes[3]] \
+                               + character_dict_cipher[key_indexes[4]] + character_dict_cipher[key_indexes[5]] \
+                               + character_dict_cipher[key_indexes[6]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[6] = key_indexes[6] + 1
+
+                if key_indexes[6] % 26 == 0 and passed_first_index6:
+                    key_indexes[5] = key_indexes[5] + 1
+                    key_indexes[6] = 0
+                    passed_first_index5 = True
+
+                passed_first_index6 = True
+
+                if key_indexes[5] % 26 == 0 and passed_first_index5:
+                    key_indexes[4] = key_indexes[4] + 1
+                    key_indexes[5] = 0
+                    passed_first_index5 = False
+                    passed_first_index4 = True
+
+                if key_indexes[4] % 26 == 0 and passed_first_index4:
+                    key_indexes[3] = key_indexes[3] + 1
+                    key_indexes[4] = 0
+                    passed_first_index4 = False
+                    passed_first_index3 = True
+
+                if key_indexes[3] % 26 == 0 and passed_first_index3:
+                    key_indexes[2] = key_indexes[2] + 1
+                    key_indexes[3] = 0
+                    passed_first_index3 = False
+                    passed_first_index2 = True
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index2 = False
+                    passed_first_index1 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+            key_indexes[3] = 0
+            key_indexes[4] = 0
+            key_indexes[5] = 0
+            key_indexes[6] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
+        elif flag8:
+            print("Entering flag8")
+            flag8 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            passed_first_index3 = False
+            passed_first_index4 = False
+            passed_first_index5 = False
+            passed_first_index6 = False
+            passed_first_index7 = False
+            possible_number_keys = 26 ** 8
+
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]] + character_dict_cipher[key_indexes[3]] \
+                               + character_dict_cipher[key_indexes[4]] + character_dict_cipher[key_indexes[5]] \
+                               + character_dict_cipher[key_indexes[6]] + character_dict_cipher[key_indexes[7]]
+                print(possible_key)
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[7] = key_indexes[7] + 1
+
+                if key_indexes[7] % 26 == 0 and passed_first_index7:
+                    key_indexes[6] = key_indexes[6] + 1
+                    key_indexes[7] = 0
+                    passed_first_index6 = True
+
+                passed_first_index7 = True
+
+                if key_indexes[6] % 26 == 0 and passed_first_index6:
+                    key_indexes[5] = key_indexes[5] + 1
+                    key_indexes[6] = 0
+                    passed_first_index6 = False
+                    passed_first_index5 = True
+
+                if key_indexes[5] % 26 == 0 and passed_first_index5:
+                    key_indexes[4] = key_indexes[4] + 1
+                    key_indexes[5] = 0
+                    passed_first_index5 = False
+                    passed_first_index4 = True
+
+                if key_indexes[4] % 26 == 0 and passed_first_index4:
+                    key_indexes[3] = key_indexes[3] + 1
+                    key_indexes[4] = 0
+                    passed_first_index4 = False
+                    passed_first_index3 = True
+
+                if key_indexes[3] % 26 == 0 and passed_first_index3:
+                    key_indexes[2] = key_indexes[2] + 1
+                    key_indexes[3] = 0
+                    passed_first_index3 = False
+                    passed_first_index2 = True
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index2 = False
+                    passed_first_index1 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+            key_indexes[3] = 0
+            key_indexes[4] = 0
+            key_indexes[5] = 0
+            key_indexes[6] = 0
+            key_indexes[7] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
+        elif flag9:
+            print("Entering flag8")
+            flag9 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            passed_first_index3 = False
+            passed_first_index4 = False
+            passed_first_index5 = False
+            passed_first_index6 = False
+            passed_first_index7 = False
+            passed_first_index8 = False
+            possible_number_keys = 26 ** 9
+
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]] + character_dict_cipher[key_indexes[3]] \
+                               + character_dict_cipher[key_indexes[4]] + character_dict_cipher[key_indexes[5]] \
+                               + character_dict_cipher[key_indexes[6]] + character_dict_cipher[key_indexes[7]] \
+                               + character_dict_cipher[key_indexes[8]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[8] = key_indexes[8] + 1
+
+                if key_indexes[8] % 26 == 0 and passed_first_index8:
+                    key_indexes[7] = key_indexes[7] + 1
+                    key_indexes[8] = 0
+                    passed_first_index7 = True
+
+                passed_first_index8 = True
+
+                if key_indexes[7] % 26 == 0 and passed_first_index7:
+                    key_indexes[6] = key_indexes[6] + 1
+                    key_indexes[7] = 0
+                    passed_first_index7 = False
+                    passed_first_index6 = True
+
+                if key_indexes[6] % 26 == 0 and passed_first_index6:
+                    key_indexes[5] = key_indexes[5] + 1
+                    key_indexes[6] = 0
+                    passed_first_index6 = False
+                    passed_first_index5 = True
+
+                if key_indexes[5] % 26 == 0 and passed_first_index5:
+                    key_indexes[4] = key_indexes[4] + 1
+                    key_indexes[5] = 0
+                    passed_first_index5 = False
+                    passed_first_index4 = True
+
+                if key_indexes[4] % 26 == 0 and passed_first_index4:
+                    key_indexes[3] = key_indexes[3] + 1
+                    key_indexes[4] = 0
+                    passed_first_index4 = False
+                    passed_first_index3 = True
+
+                if key_indexes[3] % 26 == 0 and passed_first_index3:
+                    key_indexes[2] = key_indexes[2] + 1
+                    key_indexes[3] = 0
+                    passed_first_index3 = False
+                    passed_first_index2 = True
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index2 = False
+                    passed_first_index1 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+            key_indexes[3] = 0
+            key_indexes[4] = 0
+            key_indexes[5] = 0
+            key_indexes[6] = 0
+            key_indexes[7] = 0
+            key_indexes[8] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
+        elif flag10:
+            print("Entering flag8")
+            flag10 = False
+            temp_flag = False
+            passed_first_index0 = False
+            passed_first_index1 = False
+            passed_first_index2 = False
+            passed_first_index3 = False
+            passed_first_index4 = False
+            passed_first_index5 = False
+            passed_first_index6 = False
+            passed_first_index7 = False
+            passed_first_index8 = False
+            passed_first_index9 = False
+            possible_number_keys = 26 ** 10
+
+            for z in range(possible_number_keys):
+                possible_key = character_dict_cipher[key_indexes[0]] + character_dict_cipher[key_indexes[1]] \
+                               + character_dict_cipher[key_indexes[2]] + character_dict_cipher[key_indexes[3]] \
+                               + character_dict_cipher[key_indexes[4]] + character_dict_cipher[key_indexes[5]] \
+                               + character_dict_cipher[key_indexes[6]] + character_dict_cipher[key_indexes[7]] \
+                               + character_dict_cipher[key_indexes[8]] + character_dict_cipher[key_indexes[9]]
+                possible_solution = cipher_to_plain(cipher_text, possible_key)
+                key_indexes[9] = key_indexes[9] + 1
+
+                if key_indexes[9] % 26 == 0 and passed_first_index9:
+                    key_indexes[8] = key_indexes[8] + 1
+                    key_indexes[9] = 0
+                    passed_first_index8 = True
+
+                passed_first_index9 = True
+
+                if key_indexes[8] % 26 == 0 and passed_first_index8:
+                    key_indexes[7] = key_indexes[7] + 1
+                    key_indexes[8] = 0
+                    passed_first_index8 = False
+                    passed_first_index7 = True
+
+                if key_indexes[7] % 26 == 0 and passed_first_index7:
+                    key_indexes[6] = key_indexes[6] + 1
+                    key_indexes[7] = 0
+                    passed_first_index7 = False
+                    passed_first_index6 = True
+
+                if key_indexes[6] % 26 == 0 and passed_first_index6:
+                    key_indexes[5] = key_indexes[5] + 1
+                    key_indexes[6] = 0
+                    passed_first_index6 = False
+                    passed_first_index5 = True
+
+                if key_indexes[5] % 26 == 0 and passed_first_index5:
+                    key_indexes[4] = key_indexes[4] + 1
+                    key_indexes[5] = 0
+                    passed_first_index5 = False
+                    passed_first_index4 = True
+
+                if key_indexes[4] % 26 == 0 and passed_first_index4:
+                    key_indexes[3] = key_indexes[3] + 1
+                    key_indexes[4] = 0
+                    passed_first_index4 = False
+                    passed_first_index3 = True
+
+                if key_indexes[3] % 26 == 0 and passed_first_index3:
+                    key_indexes[2] = key_indexes[2] + 1
+                    key_indexes[3] = 0
+                    passed_first_index3 = False
+                    passed_first_index2 = True
+
+                if key_indexes[2] % 26 == 0 and passed_first_index2:
+                    key_indexes[1] = key_indexes[1] + 1
+                    key_indexes[2] = 0
+                    passed_first_index2 = False
+                    passed_first_index1 = True
+
+                if key_indexes[1] % 26 == 0 and passed_first_index1:
+                    key_indexes[0] = key_indexes[0] + 1
+                    key_indexes[1] = 0
+                    passed_first_index1 = False
+                    passed_first_index0 = True
+
+                if key_indexes[0] % 26 == 0 and passed_first_index0:
+                    key_indexes[0] = 0
+
+                if substring_text in possible_solution:
+                    print("Plain Text Found: " + possible_solution)
+                    temp_flag = True
+                    break
+
+            key_indexes[0] = 0
+            key_indexes[1] = 0
+            key_indexes[2] = 0
+            key_indexes[3] = 0
+            key_indexes[4] = 0
+            key_indexes[5] = 0
+            key_indexes[6] = 0
+            key_indexes[7] = 0
+            key_indexes[8] = 0
+            key_indexes[9] = 0
+
+            if temp_flag:
+                break
+
+            index = index + 1
 
 
 # *************************************************************************************************************

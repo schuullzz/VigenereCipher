@@ -147,7 +147,6 @@ def automate_decrypting_vigenere():
             print("Plain text not found.")
             break
         elif flag1:
-            print("Entering flag1")
             flag1 = False
             temp_flag = False
             passed_first_index = False
@@ -163,16 +162,38 @@ def automate_decrypting_vigenere():
                 passed_first_index = True
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + character_dict_cipher[key_indexes[0] - 1])
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
+
+            key_indexes[0] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size one finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag2:
-            print("Entering flag2")
             flag2 = False
             temp_flag = False
             passed_first_index0 = False
@@ -195,19 +216,39 @@ def automate_decrypting_vigenere():
                     key_indexes[1] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size two finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag3:
-            print("Entering flag3")
             flag3 = False
             temp_flag = False
             passed_first_index0 = False
@@ -238,20 +279,40 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag4:
-            print("Entering flag4")
             flag4 = False
             temp_flag = False
             passed_first_index0 = False
@@ -289,9 +350,21 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -299,11 +372,19 @@ def automate_decrypting_vigenere():
             key_indexes[3] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size four finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag5:
-            print("Entering flag5")
             flag5 = False
             temp_flag = False
             passed_first_index0 = False
@@ -349,9 +430,21 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -360,11 +453,19 @@ def automate_decrypting_vigenere():
             key_indexes[4] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size five finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag6:
-            print("Entering flag6")
             flag6 = False
             temp_flag = False
             passed_first_index0 = False
@@ -417,9 +518,21 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -429,11 +542,19 @@ def automate_decrypting_vigenere():
             key_indexes[5] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size six finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag7:
-            print("Entering flag7")
             flag7 = False
             temp_flag = False
             passed_first_index0 = False
@@ -494,9 +615,21 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -507,11 +640,19 @@ def automate_decrypting_vigenere():
             key_indexes[6] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size seven finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag8:
-            print("Entering flag8")
             flag8 = False
             temp_flag = False
             passed_first_index0 = False
@@ -580,9 +721,21 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -594,11 +747,19 @@ def automate_decrypting_vigenere():
             key_indexes[7] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size eight finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag9:
-            print("Entering flag8")
             flag9 = False
             temp_flag = False
             passed_first_index0 = False
@@ -674,9 +835,21 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -689,11 +862,19 @@ def automate_decrypting_vigenere():
             key_indexes[8] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size nine finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
         elif flag10:
-            print("Entering flag8")
             flag10 = False
             temp_flag = False
             passed_first_index0 = False
@@ -776,9 +957,21 @@ def automate_decrypting_vigenere():
                     key_indexes[0] = 0
 
                 if substring_text in possible_solution:
+                    print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
-                    temp_flag = True
-                    break
+
+                    while True:
+                        continue_program = input("Would you like to continue? Enter yes or no: ")
+                        continue_program.lower()
+
+                        if continue_program == "yes":
+                            temp_flag = False
+                            break
+                        elif continue_program == "no":
+                            temp_flag = True
+                            break
+                        else:
+                            print("Wrong input. Try again.")
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -792,7 +985,16 @@ def automate_decrypting_vigenere():
             key_indexes[9] = 0
 
             if temp_flag:
-                break
+                next_digit = input("Key size ten finished would you like to continue? Enter yes or no: ")
+                next_digit.lower()
+
+                while True:
+                    if next_digit == "yes":
+                        continue
+                    elif next_digit == "no":
+                        break
+                    else:
+                        print("Wrong input. Try again.")
 
             index = index + 1
 

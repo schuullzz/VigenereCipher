@@ -7,9 +7,10 @@ import re
 # or end search. At the end of each key length the user is asked if they desire to end search.
 
 # If key is longer than six digits long this method will take a long time to complete.
-# Each key length will follow 26 ^ n where n is the number of digits. So efficiency will
+# Each for loop length will follow 26 ^ n where n is the number of digits. So efficiency will
 # be constant but the larger the number the more impractical it is to find the right key.
-# (26 ^ n where n is 7, 8, 9, or 10 will take far too long to complete).
+# (26 ^ n where n is 7, 8, 9, or 10 will take far too long to complete). On average half
+# the keys will have to be looked at.
 
 
 def automate_decrypting_vigenere():

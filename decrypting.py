@@ -1,12 +1,23 @@
 import cipher
 import re
 
+# Prompts user for ciphertext, a known word found in the plaintext, and the max size of
+# the key. Then through a brute-force algorithm searches the possible keys to find the
+# known word found in the plaintext. If a match is found the user is prompted to continue
+# or end search. At the end of each key length the user is asked if they desire to end search.
+
+# If key is longer than six digits long this method will take a long time to complete.
+# Each key length will follow 26 ^ n where n is the number of digits. So efficiency will
+# be constant but the larger the number the more impractical it is to find the right key.
+# (26 ^ n where n is 7, 8, 9, or 10 will take far too long to complete).
+
 
 def automate_decrypting_vigenere():
     # Prompt user for sentence to encrypt and the key.
     cipher_text = str(input("Enter a Cipher Text to decrypt: "))
     substring_text = str(input("Enter a substring found in Cipher Text: "))
 
+    # Request user to enter in a number between 1-10
     while True:
         key_size = int(input("Enter the max key size (1-10): "))
 
@@ -26,8 +37,11 @@ def automate_decrypting_vigenere():
     cipher_text = regular_expression.sub('', cipher_text)
     substring_text = regular_expression.sub('', substring_text)
 
+    # Creates a key list
     key_indexes = list()
+    # keeps track of the current index
     index = 0
+    # All flags are set to true for a max of key length 10
     flag1 = True
     flag2 = True
     flag3 = True
@@ -39,11 +53,14 @@ def automate_decrypting_vigenere():
     flag9 = True
     flag10 = True
 
+    # Sets all indexes to zero
     for x in range(key_size):
         key_indexes.append(0)
 
+    # continuous loop that breaks when no key is found or when user is done.
     while True:
 
+        # series of ifs that determine how many digits are being checked.
         if index == key_size:
             print("Plain text not found.")
             break
@@ -53,6 +70,7 @@ def automate_decrypting_vigenere():
             passed_first_index = False
             possible_number_keys = 26 ** 1
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_solution = cipher.cipher_to_plain(cipher_text, cipher.character_dict_cipher[key_indexes[0]])
                 key_indexes[0] = key_indexes[0] + 1
@@ -62,6 +80,8 @@ def automate_decrypting_vigenere():
 
                 passed_first_index = True
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + cipher.character_dict_cipher[key_indexes[0] - 1])
                     print("Plain Text Found: " + possible_solution)
@@ -80,11 +100,15 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
 
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
                 next_digit = input("Key size one finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
@@ -105,6 +129,7 @@ def automate_decrypting_vigenere():
             passed_first_index1 = False
             possible_number_keys = 26 ** 2
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]]
                 possible_solution = cipher.cipher_to_plain(cipher_text, possible_key)
@@ -120,6 +145,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[1] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -137,6 +164,8 @@ def automate_decrypting_vigenere():
                             break
                         else:
                             print("Wrong input. Try again.")
+                    if temp_flag:
+                        break
 
             key_indexes[0] = 0
             key_indexes[1] = 0
@@ -144,6 +173,7 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
                 next_digit = input("Key size two finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
@@ -165,6 +195,7 @@ def automate_decrypting_vigenere():
             passed_first_index2 = False
             possible_number_keys = 26 ** 3
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]]
@@ -187,6 +218,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -205,6 +238,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -212,6 +248,7 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
                 next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
@@ -234,6 +271,7 @@ def automate_decrypting_vigenere():
             passed_first_index3 = False
             possible_number_keys = 26 ** 4
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]] + cipher.character_dict_cipher[key_indexes[3]]
@@ -262,6 +300,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -280,6 +320,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -288,8 +331,9 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
-                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit = input("Key size four finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
                 print("")
 
@@ -311,6 +355,7 @@ def automate_decrypting_vigenere():
             passed_first_index4 = False
             possible_number_keys = 26 ** 5
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]] + cipher.character_dict_cipher[key_indexes[3]] \
@@ -346,6 +391,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -364,6 +411,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -373,8 +423,9 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
-                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit = input("Key size five finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
                 print("")
 
@@ -397,6 +448,7 @@ def automate_decrypting_vigenere():
             passed_first_index5 = False
             possible_number_keys = 26 ** 6
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]] + cipher.character_dict_cipher[key_indexes[3]] \
@@ -438,6 +490,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -456,6 +510,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -466,8 +523,9 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
-                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit = input("Key size six finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
                 print("")
 
@@ -491,6 +549,7 @@ def automate_decrypting_vigenere():
             passed_first_index6 = False
             possible_number_keys = 26 ** 7
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]] + cipher.character_dict_cipher[key_indexes[3]] \
@@ -539,6 +598,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -557,6 +618,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -568,8 +632,9 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
-                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit = input("Key size seven finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
                 print("")
 
@@ -594,6 +659,7 @@ def automate_decrypting_vigenere():
             passed_first_index7 = False
             possible_number_keys = 26 ** 8
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]] + cipher.character_dict_cipher[key_indexes[3]] \
@@ -649,6 +715,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -667,6 +735,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -679,8 +750,9 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
-                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit = input("Key size eight finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
                 print("")
 
@@ -706,6 +778,7 @@ def automate_decrypting_vigenere():
             passed_first_index8 = False
             possible_number_keys = 26 ** 9
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]] + cipher.character_dict_cipher[key_indexes[3]] \
@@ -767,6 +840,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -785,6 +860,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -798,8 +876,9 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
-                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit = input("Key size nine finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
                 print("")
 
@@ -826,6 +905,7 @@ def automate_decrypting_vigenere():
             passed_first_index9 = False
             possible_number_keys = 26 ** 10
 
+            # for loop that checks desired number of digits for the correct key.
             for z in range(possible_number_keys):
                 possible_key = cipher.character_dict_cipher[key_indexes[0]] + cipher.character_dict_cipher[key_indexes[1]] \
                                + cipher.character_dict_cipher[key_indexes[2]] + cipher.character_dict_cipher[key_indexes[3]] \
@@ -893,6 +973,8 @@ def automate_decrypting_vigenere():
                 if key_indexes[0] % 26 == 0 and passed_first_index0:
                     key_indexes[0] = 0
 
+                # if substring is found then key and plaintext is displayed. User will be asked
+                # if they desire to continue searching.
                 if substring_text in possible_solution:
                     print("Key Found: " + possible_key)
                     print("Plain Text Found: " + possible_solution)
@@ -911,6 +993,9 @@ def automate_decrypting_vigenere():
                         else:
                             print("Wrong input. Try again.")
 
+                    if temp_flag:
+                        break
+
             key_indexes[0] = 0
             key_indexes[1] = 0
             key_indexes[2] = 0
@@ -925,8 +1010,9 @@ def automate_decrypting_vigenere():
             if temp_flag:
                 break
 
+            # Prompts user if they would like to move on to next key length.
             while True:
-                next_digit = input("Key size three finished would you like to continue? Enter yes or no: ")
+                next_digit = input("Key size ten2 finished would you like to continue? Enter yes or no: ")
                 next_digit.lower()
                 print("")
 

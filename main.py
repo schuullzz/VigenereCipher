@@ -12,6 +12,7 @@ import decrypting
 
 print("Project 1: Vigenere Cipher\n")
 
+# While statement acting a switch statement for possible option for user.
 while True:
     print("Select an option: ")
     print("1. Task One: Encryption then Decryption.")

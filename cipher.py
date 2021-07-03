@@ -50,9 +50,7 @@ def plain_to_cipher():
         if index == len(key):
             index = 0
 
-        if character_dict[key1[index]] == character_dict[sentence1[x]]:
-            difference.append(character_dict[key1[index]])
-        elif (character_dict[key1[index]] + character_dict[sentence1[x]]) > 25:
+        if (character_dict[key1[index]] + character_dict[sentence1[x]]) > 25:
             difference.append(character_dict[key1[index]] + character_dict[sentence1[x]] - 25)
         else:
             difference.append(character_dict[key1[index]] + character_dict[sentence1[x]])
@@ -84,9 +82,7 @@ def cipher_to_plain(cipher_text, key):
         if index == len(key):
             index = 0
 
-        if character_dict[key[index]] == character_dict[cipher_text[x]]:
-            difference.append(character_dict[key[index]])
-        elif (character_dict[cipher_text[x]] - character_dict[key[index]]) < 0:
+        if (character_dict[cipher_text[x]] - character_dict[key[index]]) < 0:
             difference.append(character_dict[cipher_text[x]] - character_dict[key[index]] + 25)
         else:
             difference.append(character_dict[cipher_text[x]] - character_dict[key[index]])

@@ -3,7 +3,7 @@
 
 ## Description
 ```
-This project involves a substitution ciphers, encrytion, decryption,
+This project involves a substitution cipher, encrytion, decryption,
 and using a brute-force algorithm to find an unknown key. 
 ```
 
